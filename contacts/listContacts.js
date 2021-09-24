@@ -1,12 +1,12 @@
-// const fs = require("fs/promises");
-const contacts = require("./db/contacts.json");
+const fs = require("fs/promises");
+const path = require("path");
 
-const listContacts = async () => contacts;
+const contactsPath = path.join(__dirname, "db", "contacts.json");
 
-// const listContacts = async() => {
-//     const data = await fs.readFile("../db/contacts.json", "utf-8");
-//     const contacts = JSON.parse(data);
-//     return contacts;
-// }
+async function listContacts() {
+    const data = await fs.readFile(contactsPath, "utf-8");
+    const contacts = JSON.parse(data);
+    return contacts;
+}
 
 module.exports = listContacts;

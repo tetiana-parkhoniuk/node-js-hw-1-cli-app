@@ -3,8 +3,8 @@ const path = require("path");
 
 const contactsPath = path.join(__dirname, "db", "contacts.json");
 
-const updateContacts = async (newContacts) => {
+async function updateContacts (newContacts) {
     await fs.writeFile(contactsPath, JSON.stringify(newContacts));
-}
+};
 
 module.exports = updateContacts;
