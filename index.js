@@ -1,6 +1,6 @@
 const contactsOperations = require("./contacts");
 
-const workWithContacts = async (type = "listContacts", id, data) => {
+const workWithContacts = async (type = "listContacts", id, name, email, phone) => {
     try {
         switch (type) {
             case "list":
@@ -8,7 +8,7 @@ const workWithContacts = async (type = "listContacts", id, data) => {
             case "get":
                 return await contactsOperations.getContactById(id);
             case "add":
-                return await contactsOperations.addContact(data);
+                return await contactsOperations.addContact(name, email, phone);
             case "remove":
                 return await contactsOperations.removeContact(id);
         }
@@ -31,11 +31,11 @@ const workWithContacts = async (type = "listContacts", id, data) => {
 //     phone: "322-22-22"
 // }
 
-// workWithContacts("add", "", newContact)
-//     .then(data => console.log(data))
-//     .catch(error => console.log(error))
-
-workWithContacts("remove", 2)
+workWithContacts("add", "", "mango", "m@email.com", "1111111")
     .then(data => console.log(data))
     .catch(error => console.log(error))
+
+// workWithContacts("remove", 2)
+//     .then(data => console.log(data))
+//     .catch(error => console.log(error))
 

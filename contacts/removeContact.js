@@ -1,13 +1,13 @@
 const listContacts = require("./listContacts");
 const updateContacts = require("./updateContacts");
 
-const removeContact = async (id) => {
+const removeContact = async (contactId) => {
     const contacts = await listContacts();
-    const idx = contacts.findIndex(item => item.id === id);
+    const idx = contacts.findIndex(item => item.id === contactId);
     if (idx === -1) {
         return null;
     }
-    const newContacts = contacts.filter(item => item.id !== id);
+    const newContacts = contacts.filter(item => item.id !== contactId);
     await updateContacts(newContacts);
     return "Successfully removed!"
 }
